@@ -1,0 +1,36 @@
+import { IconProps } from "@chakra-ui/icon";
+import { ReactElement } from "react";
+
+import type { ProgrammingLanguage } from "@/lib/entities/project";
+import CssLogo from "../icons/CssLogo";
+import NextJsLogo from "../icons/NextjsLogo";
+import PythonLogo from "../icons/PythonLogo";
+import RLogo from "../icons/RLogo";
+import TypescriptLogo from "../icons/TypescriptLogo";
+
+const languageToIconMap: {
+  [language in ProgrammingLanguage]: ({ ...props }: IconProps) => ReactElement;
+} = {
+  typescript: TypescriptLogo,
+  nextjs: NextJsLogo,
+  css: CssLogo,
+  python: PythonLogo,
+  r: RLogo,
+};
+
+type ProgrammingLanguageIconProps = IconProps & {
+  programmingLanguage: ProgrammingLanguage;
+};
+
+export default function ProgrammingLanguageIcon({
+  programmingLanguage,
+  ...props
+}: ProgrammingLanguageIconProps): ReactElement | null {
+  const Logo = languageToIconMap[programmingLanguage];
+
+  if (Logo === undefined) {
+    return null;
+  }
+
+  return <Logo {...props} />;
+}
