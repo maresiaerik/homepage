@@ -79,7 +79,7 @@ function ProjectLink({ link }: { link: Project["link"] }): ReactElement | null {
 
   return (
     <HStack>
-      <NextLink href={link} passHref legacyBehavior>
+      <NextLink href={link} target={"_blank"} passHref legacyBehavior>
         <Flex alignItems={"center"}>
           <Icon as={AiFillGithub} mr={"8px"} />
           <Link color={"blue.500"}>Github Repository</Link>

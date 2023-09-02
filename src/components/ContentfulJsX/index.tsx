@@ -1,6 +1,8 @@
 "use client";
 
 import {
+  Alert,
+  AlertIcon,
   Link as ChakraLink,
   Text as ChakraText,
   Divider,
@@ -12,11 +14,12 @@ import {
 } from "@chakra-ui/react";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { BLOCKS, INLINES, MARKS } from "@contentful/rich-text-types";
+import Image from "next/image";
 import NextLink from "next/link";
 import { PropsWithChildren, ReactElement, ReactNode } from "react";
 
 const Link = ({ uri, children }: PropsWithChildren<{ uri: string }>): ReactElement => (
-  <NextLink href={uri} passHref legacyBehavior>
+  <NextLink href={uri} passHref target={"_blank"} legacyBehavior>
     <ChakraLink color={"blue.900"}>{children}</ChakraLink>
   </NextLink>
 );
@@ -66,6 +69,18 @@ const options = {
     [INLINES.ENTRY_HYPERLINK]: (_: any, children: ReactNode): ReactElement => (
       <Link uri={_.data.uri}>{children}</Link>
     ),
+    [BLOCKS.QUOTE]: (_: any, children: ReactNode): ReactElement => (
+      <Alert
+        my={"10px"}
+        borderRadius={"lg"}
+        colorScheme={"orange"}
+        status={"info"}
+        variant={"left-accent"}
+      >
+        <AlertIcon />
+        {children}
+      </Alert>
+    ),
     [INLINES.ASSET_HYPERLINK]: (_: any, children: ReactNode): ReactElement => (
       <Link uri={_.data.uri}>{children}</Link>
     ),
@@ -78,6 +93,24 @@ const options = {
     [BLOCKS.LIST_ITEM]: (_: any, children: ReactNode): ReactElement => (
       <ListItem>{children}</ListItem>
     ),
+    [BLOCKS.EMBEDDED_ASSET]: ({ data }: any): ReactElement => {
+      const assetUrl = `https:${data.target.fields.file.url}`;
+
+      return (
+        <Flex width={"full"} justifyContent={"center"} position={"relative"}>
+          <Image
+            src={assetUrl}
+            alt={data.target.fields.description}
+            width={700}
+            height={475}
+            style={{
+              maxWidth: "100%",
+              height: "auto",
+            }}
+          />
+        </Flex>
+      );
+    },
   },
 };
 

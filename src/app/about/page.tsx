@@ -28,12 +28,17 @@ export default function AboutPage(): ReactElement | null {
 
   return (
     <Flex flexDirection={{ base: "column-reverse", xl: "row" }} width={"full"} height={"full"}>
-      <Image
-        width={450}
-        height={500}
-        alt="Profile picture"
-        src={`https:${aboutData.profilePicture.fields.file?.url}`}
-      />
+      <Flex width={{ base: "100%", xl: "50%" }} position={"relative"}>
+        <Image
+          alt="Profile picture"
+          src={`https:${aboutData.profilePicture.fields.file?.url}`}
+          width={450}
+          height={500}
+          style={{
+            objectFit: "contain",
+          }}
+        />
+      </Flex>
       <VStack
         width={"full"}
         height={"full"}
@@ -42,7 +47,7 @@ export default function AboutPage(): ReactElement | null {
       >
         <VStack width={{ base: "100%", xl: "50%" }} justifyContent={"flex-start"} spacing={"20px"}>
           {aboutData.description.content.map((content, contentIdx) => (
-            <ContentfulJsx richTextDocument={content} key={contentIdx} />
+            <ContentfulJsx richTextDocument={content} key={contentIdx} alignItems={"flex-start"} />
           ))}
           <BioLinks currentLocation={aboutData.currentLocation} />
         </VStack>
