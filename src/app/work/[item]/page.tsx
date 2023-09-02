@@ -62,9 +62,11 @@ function HostedUrl({ hostedUrl }: { hostedUrl: Project["hostedUrl"] }): ReactEle
 
   return (
     <HStack>
-      <NextLink href={hostedUrl} target={"_blank"} passHref>
-        <Icon as={FiExternalLink} mr={"8px"} />
-        <Link color={"blue.500"}>This project can also be seen in its hosted environment</Link>
+      <NextLink href={hostedUrl} target={"_blank"} passHref legacyBehavior>
+        <Flex alignItems={"center"}>
+          <Icon as={FiExternalLink} mr={"8px"} />
+          <Link color={"blue.500"}>This project can also be seen in its hosted environment</Link>
+        </Flex>
       </NextLink>
     </HStack>
   );
@@ -77,9 +79,11 @@ function ProjectLink({ link }: { link: Project["link"] }): ReactElement | null {
 
   return (
     <HStack>
-      <NextLink href={link} style={{ display: "flex", alignItems: "center" }} passHref>
-        <Icon as={AiFillGithub} mr={"8px"} />
-        <Link color={"blue.500"}>Github Repository</Link>
+      <NextLink href={link} passHref legacyBehavior>
+        <Flex alignItems={"center"}>
+          <Icon as={AiFillGithub} mr={"8px"} />
+          <Link color={"blue.500"}>Github Repository</Link>
+        </Flex>
       </NextLink>
     </HStack>
   );

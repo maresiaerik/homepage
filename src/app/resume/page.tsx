@@ -42,7 +42,7 @@ export default function Resume(): ReactElement {
 function DownloadResumeAsPdf(): ReactElement {
   return (
     <Flex width={"full"} justifyContent={"flex-start"}>
-      <NextLink href={"/files/maresia-cv.pdf"} target={"_blank"} passHref>
+      <NextLink href={"/files/maresia-cv.pdf"} target={"_blank"} passHref legacyBehavior>
         <Link download={"maresia-cv.pdf"} display={"flex"} alignItems={"center"}>
           PDF format
           <Icon as={AiOutlineDownload} ml={"8px"} />
@@ -60,10 +60,9 @@ function ListOfWorkExperience({
   return (
     <VStack spacing={"80px"}>
       {workExperience.map((item: WorkExperience, itemIdx: number) => (
-        <>
+        <VStack width={"full"} key={item.id} spacing={"80px"}>
           <WorkExperienceCard
             id={item.id}
-            key={itemIdx}
             companyName={item.companyName}
             companyUrl={item.companyUrl}
             companyImage={item.companyImage}
@@ -75,7 +74,7 @@ function ListOfWorkExperience({
             endDate={item.endDate}
           />
           {itemIdx < workExperience.length - 1 && <Divider width={"80%"} />}
-        </>
+        </VStack>
       ))}
     </VStack>
   );
@@ -95,10 +94,10 @@ function ListOfEducation({ education }: { education: EducationItem }): ReactElem
       </Text>
       <VStack width={"full"} spacing={"80px"} mb={"80px"}>
         {education.universities.map((university: EducationItemResponse, universityIdx: number) => (
-          <>
-            <EducationCard {...university} key={universityIdx} />
+          <VStack width={"full"} key={university.id} spacing={"80px"}>
+            <EducationCard {...university} />
             {universityIdx < education.universities.length - 1 && <Divider width={"80%"} />}
-          </>
+          </VStack>
         ))}
       </VStack>
       <VStack width={"full"} spacing={"80px"}>
@@ -113,10 +112,10 @@ function ListOfEducation({ education }: { education: EducationItem }): ReactElem
         </Text>
         {education.certificates.map(
           (certificate: EducationItemResponse, certificateIdx: number) => (
-            <>
-              <EducationCard {...certificate} key={certificateIdx} />
+            <VStack width={"full"} key={certificate.id} spacing={"80px"}>
+              <EducationCard {...certificate} />
               {certificateIdx < education.certificates.length - 1 && <Divider width={"80%"} />}
-            </>
+            </VStack>
           ),
         )}
       </VStack>

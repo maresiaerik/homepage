@@ -70,7 +70,7 @@ function WorkExperienceCompanyName({
 }): ReactElement {
   if (companyUrl !== undefined) {
     return (
-      <NextLink href={companyUrl} style={{ display: "flex" }} passHref>
+      <NextLink href={companyUrl} style={{ display: "flex" }} passHref legacyBehavior>
         <Link color={"blue.500"} fontSize={"2xl"} textAlign={"center"}>
           {companyName}
         </Link>

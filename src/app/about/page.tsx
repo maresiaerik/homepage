@@ -27,7 +27,7 @@ export default function AboutPage(): ReactElement | null {
   const aboutData = data!;
 
   return (
-    <Flex flexDirection={{ base: "column-reverse", md: "row" }} width={"full"} height={"full"}>
+    <Flex flexDirection={{ base: "column-reverse", xl: "row" }} width={"full"} height={"full"}>
       <Image
         width={450}
         height={500}
@@ -37,10 +37,10 @@ export default function AboutPage(): ReactElement | null {
       <VStack
         width={"full"}
         height={"full"}
-        padding={{ base: 1, md: 8 }}
-        marginBottom={{ base: "20px", md: 0 }}
+        padding={{ base: 1, xl: 8 }}
+        marginBottom={{ base: "20px", xl: 0 }}
       >
-        <VStack width={{ base: "100%", md: "50%" }} justifyContent={"flex-start"} spacing={"20px"}>
+        <VStack width={{ base: "100%", xl: "50%" }} justifyContent={"flex-start"} spacing={"20px"}>
           {aboutData.description.content.map((content, contentIdx) => (
             <ContentfulJsx richTextDocument={content} key={contentIdx} />
           ))}
@@ -58,12 +58,17 @@ function BioLinks({
 }): ReactElement {
   return (
     <HStack justifyContent={"flex-start"} width={"full"} spacing={"10px"} alignItems={"center"}>
-      <NextLink href={"https://www.linkedin.com/in/maresiaerik/"} target={"_blank"} passHref>
+      <NextLink
+        href={"https://www.linkedin.com/in/maresiaerik/"}
+        target={"_blank"}
+        passHref
+        legacyBehavior
+      >
         <Link display={"flex"}>
           <Icon as={AiFillLinkedin} color={"linkedin.700"} boxSize={7} />
         </Link>
       </NextLink>
-      <NextLink href={"https://github.com/maresiaerik/"} target={"_blank"} passHref>
+      <NextLink href={"https://github.com/maresiaerik/"} target={"_blank"} passHref legacyBehavior>
         <Link display={"flex"}>
           <Icon as={AiFillGithub} boxSize={7} />
         </Link>

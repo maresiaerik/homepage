@@ -1,12 +1,12 @@
 "use client";
 
+import LayoutContext from "@/lib/contexts/LayoutContext";
+import useViewport from "@/lib/hooks/useViewport";
+import { colors } from "@/styles/theme";
 import { Flex, HStack, Icon, Link, Text, VStack } from "@chakra-ui/react";
 import NextLink from "next/link";
-import { useContext, type ReactElement } from "react";
 import { usePathname } from "next/navigation";
-import { colors } from "@/styles/theme";
-import useViewport from "@/lib/hooks/useViewport";
-import LayoutContext from "@/lib/contexts/LayoutContext";
+import { useContext, type ReactElement } from "react";
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 
 export const HEADER_HEIGHT_PX = "100px";
@@ -69,7 +69,7 @@ function NavBarLinks({ onClick }: { onClick?: () => void }): ReactElement {
 
   return (
     <>
-      <NextLink href={"/"} passHref onClick={onClick}>
+      <NextLink href={"/"} passHref onClick={onClick} legacyBehavior>
         <Link
           fontSize={"inherit"}
           color={getLinkColorForPath("")}
@@ -78,7 +78,7 @@ function NavBarLinks({ onClick }: { onClick?: () => void }): ReactElement {
           welcome
         </Link>
       </NextLink>
-      <NextLink href={"/work"} passHref onClick={onClick}>
+      <NextLink href={"/work"} passHref onClick={onClick} legacyBehavior>
         <Link
           fontSize={"inherit"}
           color={getLinkColorForPath("work")}
@@ -87,7 +87,7 @@ function NavBarLinks({ onClick }: { onClick?: () => void }): ReactElement {
           work
         </Link>
       </NextLink>
-      <NextLink href={"/resume"} passHref onClick={onClick}>
+      <NextLink href={"/resume"} passHref onClick={onClick} legacyBehavior>
         <Link
           fontSize={"inherit"}
           color={getLinkColorForPath("resume")}
@@ -96,7 +96,7 @@ function NavBarLinks({ onClick }: { onClick?: () => void }): ReactElement {
           resume
         </Link>
       </NextLink>
-      <NextLink href={"/about"} passHref onClick={onClick}>
+      <NextLink href={"/about"} passHref onClick={onClick} legacyBehavior>
         <Link
           fontSize={"inherit"}
           color={getLinkColorForPath("about")}

@@ -16,7 +16,7 @@ import NextLink from "next/link";
 import { PropsWithChildren, ReactElement, ReactNode } from "react";
 
 const Link = ({ uri, children }: PropsWithChildren<{ uri: string }>): ReactElement => (
-  <NextLink href={uri} passHref>
+  <NextLink href={uri} passHref legacyBehavior>
     <ChakraLink color={"blue.900"}>{children}</ChakraLink>
   </NextLink>
 );

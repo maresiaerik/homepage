@@ -28,7 +28,7 @@ export default function Work(): ReactElement {
       <VStack spacing={"40px"} alignItems={"flex-start"} py={"60px"}>
         {projectData.map((project: Project, projectIdx: number) => (
           <VStack key={projectIdx} spacing={0} alignItems={"flex-start"}>
-            <NextLink href={`/work/${project.id}`} passHref>
+            <NextLink href={`/work/${project.id}`} passHref legacyBehavior>
               <Link fontSize="3xl" color={"blue.900"} _hover={{ color: "blue.500" }}>
                 {project.workName}
                 <Text as={"span"} ml={"8px"}>
