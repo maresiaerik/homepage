@@ -1,7 +1,6 @@
 "use client";
 
 import { Flex, Link, VStack } from "@chakra-ui/react";
-import NextLink from "next/link";
 import { ReactElement } from "react";
 
 import LoadingSpinner from "@/components/LoadingSpinner";
@@ -27,12 +26,14 @@ export default function BlogPage(): ReactElement {
       <VStack spacing={"40px"} alignItems={"flex-start"} py={"60px"}>
         {blogPosts.map((blogPost: Blog) => (
           <VStack key={blogPost.id} spacing={0} alignItems={"flex-start"}>
-            <NextLink href={`/blog/${blogPost.id}`} passHref legacyBehavior>
-              <Link fontSize="3xl" color={"blue.900"} _hover={{ color: "blue.500" }}>
-                {blogPost.title}
-              </Link>
-            </NextLink>
-            {/* <Text color={"gray.400"}>{project.summary}</Text> */}
+            <Link
+              href={`/blog/${blogPost.id}`}
+              fontSize="3xl"
+              color={"blue.900"}
+              _hover={{ color: "blue.500" }}
+            >
+              {blogPost.title}
+            </Link>
           </VStack>
         ))}
       </VStack>

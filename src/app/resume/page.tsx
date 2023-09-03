@@ -21,7 +21,6 @@ import {
   Text,
   VStack,
 } from "@chakra-ui/react";
-import NextLink from "next/link";
 import { ReactElement } from "react";
 import { AiOutlineDownload } from "react-icons/ai";
 
@@ -55,12 +54,16 @@ export default function Resume(): ReactElement {
 function DownloadResumeAsPdf(): ReactElement {
   return (
     <Flex width={"full"} justifyContent={"flex-start"}>
-      <NextLink href={"/files/maresia-cv.pdf"} target={"_blank"} passHref legacyBehavior>
-        <Link download={"maresia-cv.pdf"} display={"flex"} alignItems={"center"}>
-          PDF format
-          <Icon as={AiOutlineDownload} ml={"8px"} />
-        </Link>
-      </NextLink>
+      <Link
+        href={"/files/maresia-cv.pdf"}
+        target={"_blank"}
+        download={"maresia-cv.pdf"}
+        display={"flex"}
+        alignItems={"center"}
+      >
+        PDF format
+        <Icon as={AiOutlineDownload} ml={"8px"} />
+      </Link>
     </Flex>
   );
 }

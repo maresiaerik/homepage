@@ -15,13 +15,12 @@ import {
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { BLOCKS, INLINES, MARKS } from "@contentful/rich-text-types";
 import Image from "next/image";
-import NextLink from "next/link";
 import { PropsWithChildren, ReactElement, ReactNode } from "react";
 
 const Link = ({ uri, children }: PropsWithChildren<{ uri: string }>): ReactElement => (
-  <NextLink href={uri} passHref target={"_blank"} legacyBehavior>
-    <ChakraLink color={"blue.900"}>{children}</ChakraLink>
-  </NextLink>
+  <ChakraLink href={uri} target={"_blank"} color={"blue.900"}>
+    {children}
+  </ChakraLink>
 );
 
 const options = {

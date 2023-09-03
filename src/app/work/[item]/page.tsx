@@ -1,7 +1,6 @@
 "use client";
 
 import { Flex, HStack, Icon, Link, Text, VStack } from "@chakra-ui/react";
-import NextLink from "next/link";
 import { useParams } from "next/navigation";
 import { ReactElement } from "react";
 import { AiFillGithub } from "react-icons/ai";
@@ -62,12 +61,12 @@ function HostedUrl({ hostedUrl }: { hostedUrl: Project["hostedUrl"] }): ReactEle
 
   return (
     <HStack>
-      <NextLink href={hostedUrl} target={"_blank"} passHref legacyBehavior>
-        <Flex alignItems={"center"}>
-          <Icon as={FiExternalLink} mr={"8px"} />
-          <Link color={"blue.500"}>This project can also be seen in its hosted environment</Link>
-        </Flex>
-      </NextLink>
+      <Flex alignItems={"center"}>
+        <Icon as={FiExternalLink} mr={"8px"} />
+        <Link href={hostedUrl} target={"_blank"} color={"blue.500"}>
+          This project can also be seen in its hosted environment
+        </Link>
+      </Flex>
     </HStack>
   );
 }
@@ -79,12 +78,12 @@ function ProjectLink({ link }: { link: Project["link"] }): ReactElement | null {
 
   return (
     <HStack>
-      <NextLink href={link} target={"_blank"} passHref legacyBehavior>
-        <Flex alignItems={"center"}>
-          <Icon as={AiFillGithub} mr={"8px"} />
-          <Link color={"blue.500"}>Github Repository</Link>
-        </Flex>
-      </NextLink>
+      <Flex alignItems={"center"}>
+        <Icon as={AiFillGithub} mr={"8px"} />
+        <Link href={link} target={"_blank"} color={"blue.500"}>
+          Github Repository
+        </Link>
+      </Flex>
     </HStack>
   );
 }

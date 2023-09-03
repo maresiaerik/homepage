@@ -1,5 +1,4 @@
 import { HStack, Icon, Link, Text, VStack } from "@chakra-ui/react";
-import NextLink from "next/link";
 import { ReactElement } from "react";
 import { FaMapMarkerAlt } from "react-icons/fa";
 
@@ -34,11 +33,9 @@ function EducationInstitutionName({
 }: EducationInstitutionNameProps): ReactElement {
   if (url !== undefined) {
     return (
-      <NextLink href={url} style={{ display: "flex" }} passHref legacyBehavior>
-        <Link color={"blue.500"} fontSize={"2xl"} textAlign={"center"}>
-          {universityName}
-        </Link>
-      </NextLink>
+      <Link href={url} color={"blue.500"} fontSize={"2xl"} textAlign={"center"}>
+        {universityName}
+      </Link>
     );
   }
 

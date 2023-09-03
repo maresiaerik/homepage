@@ -10,7 +10,6 @@ import LoadingSpinner from "@/components/LoadingSpinner";
 import UnexpectedError from "@/components/UnexpectedError";
 import { About, getAbout } from "@/lib/entities/about";
 import useFetchData from "@/lib/hooks/useFetchData";
-import NextLink from "next/link";
 import { AiFillGithub, AiFillLinkedin } from "react-icons/ai";
 
 export default function AboutPage(): ReactElement | null {
@@ -63,21 +62,12 @@ function BioLinks({
 }): ReactElement {
   return (
     <HStack justifyContent={"flex-start"} width={"full"} spacing={"10px"} alignItems={"center"}>
-      <NextLink
-        href={"https://www.linkedin.com/in/maresiaerik/"}
-        target={"_blank"}
-        passHref
-        legacyBehavior
-      >
-        <Link display={"flex"}>
-          <Icon as={AiFillLinkedin} color={"linkedin.700"} boxSize={7} />
-        </Link>
-      </NextLink>
-      <NextLink href={"https://github.com/maresiaerik/"} target={"_blank"} passHref legacyBehavior>
-        <Link display={"flex"}>
-          <Icon as={AiFillGithub} boxSize={7} />
-        </Link>
-      </NextLink>
+      <Link display={"flex"} href={"https://www.linkedin.com/in/maresiaerik/"} target={"_blank"}>
+        <Icon as={AiFillLinkedin} color={"linkedin.700"} boxSize={7} />
+      </Link>
+      <Link display={"flex"} href={"https://github.com/maresiaerik/"} target={"_blank"}>
+        <Icon as={AiFillGithub} boxSize={7} />
+      </Link>
       <HStack width={"full"} justifyContent={"flex-start"} color={"gray.400"} alignItems={"center"}>
         <Icon as={MdLocationOn} boxSize={5} />
         <Text>{currentLocation}</Text>

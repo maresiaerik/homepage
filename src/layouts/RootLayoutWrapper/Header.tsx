@@ -6,7 +6,7 @@ import { colors } from "@/styles/theme";
 import { Flex, HStack, Icon, Link, Text, VStack } from "@chakra-ui/react";
 import NextLink from "next/link";
 import { usePathname } from "next/navigation";
-import { useContext, type ReactElement } from "react";
+import { PropsWithChildren, useContext, type ReactElement } from "react";
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 
 export const HEADER_HEIGHT_PX = "100px";
@@ -69,53 +69,70 @@ function NavBarLinks({ onClick }: { onClick?: () => void }): ReactElement {
 
   return (
     <>
-      <NextLink href={"/"} passHref onClick={onClick} legacyBehavior>
-        <Link
-          fontSize={"inherit"}
-          color={getLinkColorForPath("")}
-          _hover={{ color: getLinkColorForPathOnHover("") }}
-        >
-          welcome
-        </Link>
-      </NextLink>
-      <NextLink href={"/work"} passHref onClick={onClick} legacyBehavior>
-        <Link
-          fontSize={"inherit"}
-          color={getLinkColorForPath("work")}
-          _hover={{ color: getLinkColorForPathOnHover("work") }}
-        >
-          work
-        </Link>
-      </NextLink>
-      <NextLink href={"/resume"} passHref onClick={onClick} legacyBehavior>
-        <Link
-          fontSize={"inherit"}
-          color={getLinkColorForPath("resume")}
-          _hover={{ color: getLinkColorForPathOnHover("resume") }}
-        >
-          resume
-        </Link>
-      </NextLink>
-      <NextLink href={"/blog"} passHref onClick={onClick} legacyBehavior>
-        <Link
-          fontSize={"inherit"}
-          color={getLinkColorForPath("blog")}
-          _hover={{ color: getLinkColorForPathOnHover("blog") }}
-        >
-          blog
-        </Link>
-      </NextLink>
-      <NextLink href={"/about"} passHref onClick={onClick} legacyBehavior>
-        <Link
-          fontSize={"inherit"}
-          color={getLinkColorForPath("about")}
-          _hover={{ color: getLinkColorForPathOnHover("about") }}
-        >
-          about
-        </Link>
-      </NextLink>
+      <NavBarLinkWrapper onClick={onClick}>
+        <NextLink href={"/"} passHref legacyBehavior>
+          <Link
+            fontSize={"inherit"}
+            color={getLinkColorForPath("")}
+            _hover={{ color: getLinkColorForPathOnHover("") }}
+          >
+            welcome
+          </Link>
+        </NextLink>
+      </NavBarLinkWrapper>
+      <NavBarLinkWrapper onClick={onClick}>
+        <NextLink href={"/work"} passHref legacyBehavior>
+          <Link
+            fontSize={"inherit"}
+            color={getLinkColorForPath("work")}
+            _hover={{ color: getLinkColorForPathOnHover("work") }}
+          >
+            work
+          </Link>
+        </NextLink>
+      </NavBarLinkWrapper>
+      <NavBarLinkWrapper onClick={onClick}>
+        <NextLink href={"/resume"} passHref legacyBehavior>
+          <Link
+            fontSize={"inherit"}
+            color={getLinkColorForPath("resume")}
+            _hover={{ color: getLinkColorForPathOnHover("resume") }}
+          >
+            resume
+          </Link>
+        </NextLink>
+      </NavBarLinkWrapper>
+      <NavBarLinkWrapper onClick={onClick}>
+        <NextLink href={"/blog"} passHref legacyBehavior>
+          <Link
+            fontSize={"inherit"}
+            color={getLinkColorForPath("blog")}
+            _hover={{ color: getLinkColorForPathOnHover("blog") }}
+          >
+            blog
+          </Link>
+        </NextLink>
+      </NavBarLinkWrapper>
+      <NavBarLinkWrapper onClick={onClick}>
+        <NextLink href={"/about"} passHref onClick={onClick} legacyBehavior>
+          <Link
+            fontSize={"inherit"}
+            color={getLinkColorForPath("about")}
+            _hover={{ color: getLinkColorForPathOnHover("about") }}
+          >
+            about
+          </Link>
+        </NextLink>
+      </NavBarLinkWrapper>
     </>
   );
+}
+
+function NavBarLinkWrapper({
+  onClick,
+  children,
+}: PropsWithChildren<{ onClick?: () => void }>): ReactElement {
+  return <Flex onClick={onClick}>{children}</Flex>;
 }
 
 export function FullScreenNavBar(): ReactElement {

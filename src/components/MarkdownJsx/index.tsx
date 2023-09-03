@@ -1,9 +1,16 @@
 "use client";
 
 /* eslint-disable react/no-children-prop */
-import { Code as ChakraCode, ListItem, OrderedList, Text, UnorderedList } from "@chakra-ui/react";
+import {
+  Code as ChakraCode,
+  ListItem,
+  OrderedList,
+  Text,
+  UnorderedList,
+  VStack,
+} from "@chakra-ui/react";
 import Markdown from "markdown-to-jsx";
-import { ReactElement } from "react";
+import { PropsWithChildren, ReactElement } from "react";
 import { Prism as SyntaxHighlighter, SyntaxHighlighterProps } from "react-syntax-highlighter";
 import { oneLight } from "react-syntax-highlighter/dist/esm/styles/prism";
 
@@ -29,21 +36,38 @@ const Code = ({ className, children }: CodeProps): ReactElement => {
 
   return (
     <SyntaxHighlighter
-      customStyle={{ marginTop: "20px", marginBottom: "20px", borderRadius: "15px" }}
+      customStyle={{
+        marginTop: "20px",
+        marginBottom: "20px",
+        borderRadius: "15px",
+        width: "100%",
+        maxWidth: "100%",
+        overflowX: "scroll",
+      }}
       language={language?.toLowerCase()}
       style={oneLight}
       showInlineLineNumbers
+      wrapLongLines
     >
       {children}
     </SyntaxHighlighter>
   );
 };
 
+function MarkdownWrapper(props: PropsWithChildren): ReactElement {
+  return (
+    <VStack width={"full"} alignItems={"flex-start"}>
+      {props.children}
+    </VStack>
+  );
+}
+
 export default function MarkdownJsx({ markdown }: MarkdownJsxProps): ReactElement {
   return (
     <Markdown
       children={markdown}
       options={{
+        wrapper: MarkdownWrapper,
         overrides: {
           p: {
             component: Text,

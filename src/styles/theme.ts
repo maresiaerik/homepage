@@ -34,11 +34,12 @@ export const breakpoints = {
   base: "0px",
   sm: "400px",
   md: "500px",
+  lg: "600px",
   xl: "650px",
   "2xl": "750px",
 };
 
-export const MAX_DESKTOP_WIDTH_PX = breakpoints.md;
+export const MAX_DESKTOP_WIDTH_PX = breakpoints.lg;
 
 const theme = extendTheme({
   fonts: {

@@ -3,7 +3,6 @@
 import { WorkExperience } from "@/lib/entities/work-experience";
 import { HStack, Icon, Link, Text, VStack } from "@chakra-ui/react";
 import Image from "next/image";
-import NextLink from "next/link";
 import { ReactElement } from "react";
 
 import { getFormattedContentfulDate } from "@/lib/services/contentful";
@@ -26,7 +25,7 @@ export default function WorkExperienceCard(props: WorkExperienceCardProps): Reac
   );
 }
 
-type WorkExperienceMetaData = Omit<
+type WorkExperienceMetaDataProps = Omit<
   WorkExperienceCardProps,
   "roleDescription" | "id" | "role" | "workType"
 >;
@@ -38,7 +37,7 @@ function WorkExperienceMetaData({
   companyImage,
   companyUrl,
   endDate,
-}: WorkExperienceMetaData): ReactElement {
+}: WorkExperienceMetaDataProps): ReactElement {
   const parsedImageUrl = companyImage?.fields.file?.url?.toString().split("//")[1];
 
   return (
@@ -70,11 +69,9 @@ function WorkExperienceCompanyName({
 }): ReactElement {
   if (companyUrl !== undefined) {
     return (
-      <NextLink href={companyUrl} style={{ display: "flex" }} passHref legacyBehavior>
-        <Link color={"blue.500"} fontSize={"2xl"} textAlign={"center"}>
-          {companyName}
-        </Link>
-      </NextLink>
+      <Link href={companyUrl} color={"blue.500"} fontSize={"2xl"} textAlign={"center"}>
+        {companyName}
+      </Link>
     );
   }
 
