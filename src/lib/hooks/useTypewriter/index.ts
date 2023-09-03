@@ -1,4 +1,4 @@
-import { useRef, useState, useCallback, useEffect } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 export default function useTypewriter(wordsToTypeOnScreen: string[]): {
   text: string;

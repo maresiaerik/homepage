@@ -14,6 +14,7 @@
   "parserOptions": {
     "project": "./tsconfig.eslint.json"
   },
+  "ignorePatterns": ["**/node_modules/**"],
   "rules": {
     "import/no-named-as-default": 0,
     "no-use-before-define": 0,

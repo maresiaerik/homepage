@@ -1,9 +1,9 @@
 "use client";
 
+import LayoutContext from "@/lib/contexts/LayoutContext";
 import { PropsWithChildren, ReactElement, useState } from "react";
 import Header, { FullScreenNavBar } from "./Header";
 import Main from "./Main";
-import LayoutContext from "@/lib/contexts/LayoutContext";
 
 export default function RootLayoutWrapper({ children }: PropsWithChildren): ReactElement {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);

@@ -1,5 +1,5 @@
 import * as Contentful from "contentful";
-import { getContentfulClient, flattenResponseEntriesToFields } from "../services/contentful";
+import { flattenResponseEntriesToFields, getContentfulClient } from "../services/contentful";
 
 export type About = {
   id: Contentful.BaseSys["id"];

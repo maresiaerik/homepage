@@ -1,4 +1,4 @@
-import { FetchDataState } from ".";
+import type { FetchDataState } from ".";
 
 export type DispatchAction<TData> =
   | { type: "PENDING" }

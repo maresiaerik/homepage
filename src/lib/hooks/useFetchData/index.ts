@@ -19,7 +19,7 @@ export default function useFetchData<TData>(
   useEffect(() => {
     dispatch({ type: "PENDING" });
 
-    const fetchData = async () => {
+    const fetchData = async (): Promise<void> => {
       try {
         const data = await dataFetcher();
 
@@ -30,7 +30,7 @@ export default function useFetchData<TData>(
     };
 
     fetchData();
-  }, []);
+  }, [dataFetcher]);
 
   return state;
 }
