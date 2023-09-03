@@ -6,6 +6,7 @@ import CssLogo from "../icons/CssLogo";
 import NextJsLogo from "../icons/NextjsLogo";
 import PythonLogo from "../icons/PythonLogo";
 import RLogo from "../icons/RLogo";
+import ReactLogo from "../icons/ReactLogo";
 import TypescriptLogo from "../icons/TypescriptLogo";
 
 const languageToIconMap: {
@@ -13,6 +14,7 @@ const languageToIconMap: {
 } = {
   typescript: TypescriptLogo,
   nextjs: NextJsLogo,
+  react: ReactLogo,
   css: CssLogo,
   python: PythonLogo,
   r: RLogo,

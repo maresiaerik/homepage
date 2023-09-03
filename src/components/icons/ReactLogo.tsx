@@ -12,7 +12,7 @@ export default function ReactLogo({ ...props }: IconProps): ReactElement {
     >
       <g
         transform="translate(0.000000,2000.000000) scale(0.100000,-0.100000)"
-        fill="#000000"
+        fill="#F000"
         stroke="none"
       ></g>
     </Icon>

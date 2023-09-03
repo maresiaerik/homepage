@@ -8,7 +8,19 @@ import useFetchResumeData from "@/lib/hooks/useFetchResumeData";
 import EducationCard from "@/components/EducationCard";
 import WorkExperienceCard from "@/components/WorkExperienceCard";
 import { EducationItem, EducationItemResponse } from "@/lib/entities/education";
-import { Center, Divider, Flex, Icon, Link, Text, VStack } from "@chakra-ui/react";
+import { Skill, Skills } from "@/lib/entities/skills";
+import {
+  Center,
+  CircularProgress,
+  CircularProgressLabel,
+  Divider,
+  Flex,
+  Icon,
+  Link,
+  SimpleGrid,
+  Text,
+  VStack,
+} from "@chakra-ui/react";
 import NextLink from "next/link";
 import { ReactElement } from "react";
 import { AiOutlineDownload } from "react-icons/ai";
@@ -24,13 +36,14 @@ export default function Resume(): ReactElement {
     return <UnexpectedError />;
   }
 
-  const { workExperience, education } = data!;
+  const { workExperience, education, skills } = data!;
 
   return (
     <VStack width={"full"} height={"full"}>
       <DownloadResumeAsPdf />
       <Center width={"full"}>
         <VStack width={{ base: "100%", md: "70%" }} alignItems={"center"}>
+          <ListOfSkills skills={skills} />
           <ListOfWorkExperience workExperience={workExperience} />
           <ListOfEducation education={education} />
         </VStack>
@@ -49,6 +62,26 @@ function DownloadResumeAsPdf(): ReactElement {
         </Link>
       </NextLink>
     </Flex>
+  );
+}
+
+function ListOfSkills({ skills }: { skills: Skills }): ReactElement {
+  return (
+    <SimpleGrid
+      columns={{ base: 4, md: 8 }}
+      spacing={{ base: "15px", md: "10px" }}
+      mb={"50px"}
+      mt={{ base: "50px", md: 0 }}
+    >
+      {Object.keys(skills).map((skillName: keyof Skill) => (
+        <VStack key={skillName} alignItems={"center"}>
+          <Text fontSize={{ base: "xs", xl: "md" }}>{skillName}</Text>
+          <CircularProgress value={skills[skillName]} color={"blue.500"} thickness={"5px"}>
+            <CircularProgressLabel>{skills[skillName]}%</CircularProgressLabel>
+          </CircularProgress>
+        </VStack>
+      ))}
+    </SimpleGrid>
   );
 }
 

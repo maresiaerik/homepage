@@ -22,13 +22,17 @@
     "@fontsource-variable/quicksand": "^5.0.8",
     "@fontsource/abril-fatface": "^5.0.8",
     "@reduxjs/toolkit": "^1.9.5",
+    "@types/markdown-to-jsx": "^7.0.1",
+    "@types/react-syntax-highlighter": "^15.5.7",
     "contentful": "^10.5.0",
     "framer-motion": "^10.16.1",
+    "markdown-to-jsx": "^7.3.2",
     "next": "^13.4.19",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-icons": "^4.10.1",
     "react-redux": "^8.1.2",
+    "react-syntax-highlighter": "^15.5.0",
     "redux-persist": "^6.0.0"
   },
   "devDependencies": {

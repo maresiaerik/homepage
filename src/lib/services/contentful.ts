@@ -1,6 +1,6 @@
-import { EntryCollection, createClient, EntryFields, Entry } from "contentful";
+import { ContentfulClientApi, Entry, EntryCollection, EntryFields, createClient } from "contentful";
 
-export const getContentfulClient = () =>
+export const getContentfulClient = (): ContentfulClientApi<any> =>
   createClient({
     space: process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID as string,
     accessToken: process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN as string,
@@ -23,7 +23,7 @@ export const flattenResponseEntriesToFields = <TData>(response: EntryCollection<
   return data;
 };
 
-export const flattenResponseEntryToFields = <TData>(response: Entry) => {
+export const flattenResponseEntryToFields = <TData>(response: Entry): TData => {
   return transformContentfulResponseEntryToStandardFormat<TData>(response);
 };
 

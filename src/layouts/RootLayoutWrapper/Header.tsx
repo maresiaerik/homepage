@@ -96,6 +96,15 @@ function NavBarLinks({ onClick }: { onClick?: () => void }): ReactElement {
           resume
         </Link>
       </NextLink>
+      <NextLink href={"/blog"} passHref onClick={onClick} legacyBehavior>
+        <Link
+          fontSize={"inherit"}
+          color={getLinkColorForPath("blog")}
+          _hover={{ color: getLinkColorForPathOnHover("blog") }}
+        >
+          blog
+        </Link>
+      </NextLink>
       <NextLink href={"/about"} passHref onClick={onClick} legacyBehavior>
         <Link
           fontSize={"inherit"}

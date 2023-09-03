@@ -1,12 +1,12 @@
 import * as Contentful from "contentful";
 import {
-  getContentfulClient,
   flattenResponseEntriesToFields,
   flattenResponseEntryToFields,
+  getContentfulClient,
 } from "../services/contentful";
 
 type LinkType = "Github" | string;
-export type ProgrammingLanguage = "typescript" | "python" | "nextjs" | "r" | "css";
+export type ProgrammingLanguage = "typescript" | "python" | "nextjs" | "r" | "css" | "react";
 
 export type Project = {
   id: Contentful.BaseSys["id"];
