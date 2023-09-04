@@ -1,38 +1,35 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+I had already built a personal website for my CV and some projects that I had done, but it had already been a few years and I wasn't really happy the quality anymore. So instead of refactoring it, I decided to do a complete rebuild.
+A few reasons as to why I decided to rebuild and not refactor. My earlier homepage was written with NextJS v9.3, JavaScript, React and SCSS. 
 
-## Getting Started
+In the past years, I've developed mostly in TypeScript. I see this as a much more productive (and safe!) way to develop larger projects. It not only helps to make sure what different data looks like, but catches easy mistakes early on.
 
-First, run the development server:
+Manually writing CSS is very nice and rewarding, but for larger projects it can get very hard to maintain. It's very hard to write scalable and maintainable CSS code using classnames or other selectors. For the past year or so, I've almost exclusively used Chakra UI in my frontend work. It's far from a perfect library, but it offers a nice balance between customisability and productivity.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+The previous homepage also had an older version of NextJS - `v9.3`. Since then, NextJS has had a few large releases, with the biggest one perhaps being `v13`. I had not had time to experiment with the `app/` directory functionality that the new version brings, so I wanted to try it out. I must say that after wrapping my head around it for a while, I really like it.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+## Challenges
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+As I mentioned above, I wanted to try and experiment with the new app directory. Upon starting this project, I wasn't very aware of what the new app directory would be offering, except the obvious - a different folder structure. 
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+After reading about it a bit more, I understood that it tries to solve an interesting problem in frontend development - moving things away from the client, to the server. This makes sense, as modern the typical modern website has a lot of things going on. Most react JSX is just static, and it would make sense for the server to handle it.
 
-## Learn More
+Now to the challenges. Currently (`v13.4.19`), the way to differentiate server and client side code, is to add a `"use client"` directive to the top of the file where you wish to excecute client side code. Fairly straightforward, right? Well yes, if you're the author of that code. It's harder for third party code, and especially UI libraries, if they specifically have the need to operate in the client. This became an issue, as I wanted to use Chakra UI, which runs on the client, and needs to.
 
-To learn more about Next.js, take a look at the following resources:
+To be honest, I have currently absolutely no real need adopt the app/ directory from Next 13, nor have I any real reason to have the rendering happening on the server. Running Chakra UI would break when building, so it was clearly an issue. So I had three options: revert to the old `pages/` directory structure, change the UI library, or force Next to render everything on the client.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+For me it was more important to learn something new, than to have a perfect implementation. So what I decided to go for at this stage was to force Next to render everything on the client. I found this useful article of someone having the same issue. Chakra UI has plans to migrate to the server first era of modern web development, but it will take time. Sometime in the near future I will probably change the UI to Panda, which is RSC (React Server Component) compatible and developed by the Chakra team.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Technologies used
+- [NextJS](https://nextjs.org) (13.4, with `app/`  directory)
+- [React](https://react.dev) (18.2)
+- [Typescript](https://www.typescriptlang.org) (5.2)
+- [Chakra UI](https://chakra-ui.com)
+- [Contentful](https://www.contentful.com) for a headless CMS
+- [Vercel](https://vercel.com) for hosting
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+
