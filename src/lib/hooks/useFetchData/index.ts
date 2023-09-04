@@ -30,7 +30,8 @@ export default function useFetchData<TData>(
     };
 
     fetchData();
-  }, [dataFetcher]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return state;
 }
