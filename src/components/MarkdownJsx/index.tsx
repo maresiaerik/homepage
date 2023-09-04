@@ -3,6 +3,7 @@
 /* eslint-disable react/no-children-prop */
 import {
   Code as ChakraCode,
+  Flex,
   ListItem,
   OrderedList,
   Text,
@@ -51,6 +52,22 @@ const Code = ({ className, children }: CodeProps): ReactElement => {
     >
       {children}
     </SyntaxHighlighter>
+  );
+};
+
+const Blockquote = ({ children }: PropsWithChildren): ReactElement => {
+  return (
+    <Flex
+      width={"full"}
+      padding={"10px"}
+      borderLeft={"5px solid"}
+      textAlign={"left"}
+      background={"gray.100"}
+      borderLeftColor={"gray.400"}
+      borderRadius={"lg"}
+    >
+      <Text>{children}</Text>
+    </Flex>
   );
 };
 
@@ -124,6 +141,9 @@ export default function MarkdownJsx({ markdown }: MarkdownJsxProps): ReactElemen
           },
           code: {
             component: Code,
+          },
+          blockquote: {
+            component: Blockquote,
           },
         },
       }}
