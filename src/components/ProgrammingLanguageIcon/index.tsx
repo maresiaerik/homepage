@@ -7,17 +7,19 @@ import NextJsLogo from "../icons/NextjsLogo";
 import PythonLogo from "../icons/PythonLogo";
 import RLogo from "../icons/RLogo";
 import ReactLogo from "../icons/ReactLogo";
+import ReduxLogo from "../icons/ReduxLogo";
 import TypescriptLogo from "../icons/TypescriptLogo";
 
-const languageToIconMap: {
-  [language in ProgrammingLanguage]: ({ ...props }: IconProps) => ReactElement;
-} = {
+type LanguageToIconMap = Record<ProgrammingLanguage, ({ ...props }: IconProps) => ReactElement>;
+
+const languageToIconMap: LanguageToIconMap = {
   typescript: TypescriptLogo,
   nextjs: NextJsLogo,
   react: ReactLogo,
   css: CssLogo,
   python: PythonLogo,
   r: RLogo,
+  redux: ReduxLogo,
 };
 
 type ProgrammingLanguageIconProps = IconProps & {

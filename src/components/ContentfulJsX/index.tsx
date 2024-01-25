@@ -8,6 +8,7 @@ import {
   Divider,
   Flex,
   ListItem,
+  OrderedList,
   StackProps,
   UnorderedList,
   VStack,
@@ -60,6 +61,16 @@ const options = {
         {children}
       </ChakraText>
     ),
+    [BLOCKS.HEADING_3]: (_: any, children: ReactNode): ReactElement => (
+      <ChakraText as={"h3"} fontWeight={600} fontSize={"2xl"}>
+        {children}
+      </ChakraText>
+    ),
+    [BLOCKS.HEADING_4]: (_: any, children: ReactNode): ReactElement => (
+      <ChakraText as={"h4"} fontWeight={600} fontSize={"xl"}>
+        {children}
+      </ChakraText>
+    ),
     [BLOCKS.PARAGRAPH]: (_: any, children: ReactNode): ReactElement => (
       <ChakraText whiteSpace={"pre-wrap"} textAlign={"inherit"}>
         {children}
@@ -88,6 +99,9 @@ const options = {
     },
     [BLOCKS.UL_LIST]: (_: any, children: ReactNode): ReactElement => (
       <UnorderedList>{children}</UnorderedList>
+    ),
+    [BLOCKS.OL_LIST]: (_: any, children: ReactNode): ReactElement => (
+      <OrderedList>{children}</OrderedList>
     ),
     [BLOCKS.LIST_ITEM]: (_: any, children: ReactNode): ReactElement => (
       <ListItem>{children}</ListItem>

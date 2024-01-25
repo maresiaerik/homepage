@@ -6,7 +6,14 @@ import {
 } from "../services/contentful";
 
 type LinkType = "Github" | string;
-export type ProgrammingLanguage = "typescript" | "python" | "nextjs" | "r" | "css" | "react";
+export type ProgrammingLanguage =
+  | "typescript"
+  | "python"
+  | "nextjs"
+  | "r"
+  | "css"
+  | "react"
+  | "redux";
 
 export type Project = {
   id: Contentful.BaseSys["id"];
